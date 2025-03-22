@@ -97,7 +97,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 ```bash
 git clone https://github.com/Anushsekar/M607-Computer-Science-Application-Lab.git
-cd mystore
+cd M607-Computer-Science-Application-Lab
 ```
 
 2. Create a virtual environment (recommended):
@@ -114,7 +114,7 @@ pip install -r requirements.txt
 ## Project Structure
 
 ```
-mystore/
+M607-Computer-Science-Application-Lab/
 ├── app.py              # Main application file
 ├── database_manager.py # Database operations
 ├── static/
@@ -131,7 +131,7 @@ mystore/
 │   ├── register.html
 │   ├── profile.html
 │   └── order_confirmation.html
-└── ecommerce.db       # SQLite database
+└── ecommerce.db       # SQLite database It will be there once the program start's to run.
 ```
 
 ## Database Setup
@@ -154,7 +154,7 @@ python app.py
 
 3. Open your web browser and navigate to:
 ```
-http://localhost:5000
+http://127.0.0.1:5000
 ```
 
 ## Admin Access
