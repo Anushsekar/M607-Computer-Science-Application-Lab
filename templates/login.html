@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MyStore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Login Section -->
+    <div class="login-page">
+        <div class="login-box">
+            <h2>Welcome Back!</h2>
+            <p class="sub-text">Login to continue shopping</p>
+
+            <!-- Display Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('login') }}">
+                <!-- Username Field -->
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Enter Username" required>
+                    <span class="icon">👤</span>
+                </div>
+
+                <!-- Password Field -->
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Enter Password" required>
+                    <span class="icon">🔒</span>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <!-- Additional Options -->
+            <div class="login-options">
+                <p class="register">New User? <a href="{{ url_for('register') }}">Create an Account</a></p>
+            </div>
+
+            <!-- Back to Home -->
+            <a href="{{ url_for('home') }}" class="back-home">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

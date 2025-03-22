@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyStore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">MyStore</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button type="submit">🔍</button>
+        </div>
+        
+        <nav class="nav-right">
+            {% if user_id %}
+                <div class="dropdown">
+                    <a href="#" class="nav-link profile-link">
+                        <span class="icon">👤</span>
+                        <span class="text">My Profile</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('profile') }}">
+                            <span class="icon">⚙️</span>
+                            <span class="text">Profile Settings</span>
+                        </a>
+                        <a href="{{ url_for('logout') }}">
+                            <span class="icon">🚪</span>
+                            <span class="text">Logout</span>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-link">
+                    <span class="icon">👤</span>
+                    <span class="text">Login</span>
+                </a>
+                <a href="{{ url_for('register') }}" class="nav-link">
+                    <span class="icon">✍️</span>
+                    <span class="text">Register</span>
+                </a>
+            {% endif %}
+            <a href="{{ url_for('cart') }}" class="nav-link cart">
+                <span class="icon">🛒</span>
+                <span class="text">Cart</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        {% if categories %}
+        <div class="category-filter">
+            <a href="{{ url_for('home') }}" class="category-link {% if not request.args.get('category') %}active{% endif %}">All</a>
+            {% for category in categories %}
+                <a href="{{ url_for('home', category=category) }}" 
+                   class="category-link {% if request.args.get('category') == category %}active{% endif %}">
+                    {{ category }}
+                </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <h2 class="section-title">Available Products</h2>
+        <div class="product-list">
+            {% for product in products %}
+                <div class="product">
+                    <img src="{{ url_for('static', filename='images/' + product.image_url) }}" alt="{{ product.name }}">
+                    <div class="product-info">
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">Price: ${{ "%.2f"|format(product.price) }}</p>
+                        <p class="description">{{ product.description }}</p>
+                        <p class="stock">In Stock: {{ product.stock }}</p>
+                        
+                        <div class="add-to-cart-container">
+                            <div class="quantity-selector">
+                                <label for="quantity-{{ product.id }}">Quantity:</label>
+                                <select name="quantity" id="quantity-{{ product.id }}">
+                                    {% for i in range(1, (product.stock + 1) if product.stock < 10 else 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" data-product-id="{{ product.id }}">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p class="no-products">No products available.</p>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

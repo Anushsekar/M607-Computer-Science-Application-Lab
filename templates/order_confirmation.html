@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation | MyStore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">MyStore</a>
+        </div>
+        
+        <nav class="nav-right">
+            <a href="{{ url_for('home') }}" class="nav-link">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="{{ url_for('cart') }}" class="nav-link cart">
+                <span class="icon">🛒</span>
+                <span>Cart</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="confirmation-container">
+        <div class="confirmation-box">
+            <div class="success-icon">✅</div>
+            <h1>Order Confirmed!</h1>
+            <p class="order-number">Order #{{ order_id }}</p>
+            
+            <div class="confirmation-message">
+                <p>Thank you for your purchase! We've received your order and will process it shortly.</p>
+                <p>A confirmation email will be sent to your registered email address.</p>
+            </div>
+
+            <div class="next-steps">
+                <h2>What's Next?</h2>
+                <ul>
+                    <li>You'll receive an email confirmation shortly</li>
+                    <li>We'll notify you when your order ships</li>
+                    <li>You can track your order status in your account</li>
+                </ul>
+            </div>
+
+            <div class="confirmation-actions">
+                <a href="{{ url_for('home') }}" class="btn btn-primary">Continue Shopping</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

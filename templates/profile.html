@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | MyStore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">MyStore</a>
+        </div>
+        
+        <nav class="nav-right">
+            <a href="{{ url_for('home') }}" class="nav-link">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="{{ url_for('cart') }}" class="nav-link cart">
+                <span class="icon">🛒</span>
+                <span>Cart</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <h1>Profile Settings</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="profile-info">
+            <h2>Account Information</h2>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <!-- Add more user information as needed -->
+        </div>
+
+        <div class="profile-actions">
+            <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+    </main>
+</body>
+</html> 
