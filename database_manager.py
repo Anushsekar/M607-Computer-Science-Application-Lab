@@ -248,13 +248,13 @@ class DatabaseManager:
                 if cursor.fetchone()[0] == 0:
                     products = [
                         ('Laptop Pro', 1299.99, 'Electronics', 
-                         'High-performance laptop with latest specs', 50, 'laptop.jpg'),
+                         'High-performance laptop with latest specs', 50, 'Macbook_Pro.jpeg'),
                         ('Smartphone X', 799.99, 'Electronics',
-                         'Latest smartphone with advanced features', 100, 'phone.jpg'),
+                         'Latest smartphone with advanced features', 100, 'iphone_pro_15.jpeg'),
                         ('Wireless Headphones', 199.99, 'Accessories',
-                         'Premium wireless headphones with noise cancellation', 75, 'headphones.jpg'),
+                         'Premium wireless headphones with noise cancellation', 75, 'airpods.jpeg'),
                         ('Smart Watch', 299.99, 'Accessories',
-                         'Feature-rich smartwatch with health monitoring', 60, 'smartwatch.jpg')
+                         'Feature-rich smartwatch with health monitoring', 60, 'iwatch.jpeg')
                     ]
                     cursor.executemany("""
                         INSERT INTO products (name, price, category, description, stock, image_url)
