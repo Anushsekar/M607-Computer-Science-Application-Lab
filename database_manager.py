@@ -250,7 +250,7 @@ class DatabaseManager:
                         ('Laptop Pro', 1299.99, 'Electronics', 
                          'High-performance laptop with latest specs', 50, 'Macbook_Pro.jpeg'),
                         ('Smartphone X', 799.99, 'Electronics',
-                         'Latest smartphone with advanced features', 100, 'iphone_pro_15.jpeg'),
+                         'Latest smartphone with advanced features', 100, 'iphone_15_pro.jpeg'),
                         ('Wireless Headphones', 199.99, 'Accessories',
                          'Premium wireless headphones with noise cancellation', 75, 'airpods.jpeg'),
                         ('Smart Watch', 299.99, 'Accessories',
